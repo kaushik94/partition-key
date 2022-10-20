@@ -1,0 +1,3 @@
+# Refactor idea
+
+The initial code has all functions in the same function. This goes against the principle of code isolation and encapsulation. Ideally one function should not know the details of another function. The root function or the index function should be as short and readable as possible so that the programmer who reads it for the first time understands what it does in a single glance. The function names are self-explanatory and I did some documentation to understand why a statement is written. Hence I think the refactored version is better than the original.
