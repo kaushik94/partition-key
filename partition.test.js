@@ -1,6 +1,5 @@
 const deterministicPartitionKey = require("./partition")
 
-deterministicPartitionKey({partitionKey: "0"});
 
 test("deterministicPartitionKey shoul work with an initial partition key", () => {
     expect(deterministicPartitionKey({partitionKey: "0"})).toBe("0")

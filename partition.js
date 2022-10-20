@@ -12,10 +12,6 @@ const generatePartitionKey = (event, options={}) => {
     // in case we don't get an event
     // we push it to the first partition
     const TRIVIAL_PARTITION_KEY = "0";
-    if (!event) {
-        console.log("No event found, couldnt generate a partition key");
-        return TRIVIAL_PARTITION_KEY
-    }
     // default algorithms and hex values
     let algorithm = "sha3-512";
     let hex = "hex"
@@ -29,8 +25,15 @@ const generatePartitionKey = (event, options={}) => {
             hex = options.hex
         }
     }
+
+    if (!event) {
+        console.log("No event found, couldnt generate a partition key");
+        return TRIVIAL_PARTITION_KEY;
+    }
+
     const data = JSON.stringify(event);
     candidate = crypto.createHash(algorithm).update(data).digest(hex);
+    // ensure candidate is a string before returning
     if (typeof candidate !== "string") {
         candidate = JSON.stringify(candidate);
     }
