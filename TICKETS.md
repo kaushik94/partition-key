@@ -9,7 +9,7 @@ A function generateReport is then called with the list of Shifts. It converts th
 
 You've been asked to work on a ticket. It reads:
 
-Currently, the id of each Agent on the reports we generate is their internal database id. We'd like to add the ability for Facilities to save their own custom ids for each Agent they work with and use that id when generating reports for them.
+>Currently, the id of each Agent on the reports we generate is their internal database id. We'd like to add the ability for Facilities to save their own custom ids for each Agent they work with and use that id when generating reports for them.
 
 
 # Solution
@@ -39,22 +39,25 @@ It should have Facility_id, Agent_id, Agent_custom_id. Each of these rows should
 ## Tasks breakdown
 
 1. Create a password protected webpage that accepts excel sheets. 
-1-2 days assuming we already have a website.
+
+>1-2 days assuming we already have a website.
 
 2. Create a microservice that takes excel sheet as an input and checks that all agents of that facility are mapped or that there are no missing entries or repeating entries. If an error occurs, it should send a slack message to the engineering manager so that he can quickly take this to the Facilities.
 
-10-14 days including testing and buffer time.
+>10-14 days including testing and buffer time.
 
 3. Create a table "custom" with Facility_id, Agent_id, Agent_custom_id.
 
-3-4 days. This is a backend task and depends on the complexity of the database design and scalability etc.
+>3-4 days. This is a backend task and depends on the complexity of the database design and scalability etc.
 It could even take a week maybe.
 
 4. Create a service that takes a list of rows as input and assigns them to this "custom" table
-2-3 days.
+
+>2-3 days.
 
 5. Create a service named "generateCustomReport" that joins the shifts, facilities and custom tables and adds custom_id to the report.
-1 week. This involves writing queries to database and depends on the complexity of the task
+
+>1 week. This involves writing queries to database and depends on the complexity of the task
 
 
 Overall it should take about a month with 2 developers and 1 tester to bring this to production. This is including some buffer time, meetings, testing and focus to other ad-hoc tasks. It might take a week longer depending on the situation.
